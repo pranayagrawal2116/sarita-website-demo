@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AppProvider } from './context/AppContext';
 import { Toast } from './components/ui/Toast';
 
+// Auth Route Guards
+import { CustomerProtectedRoute } from './components/auth/CustomerProtectedRoute';
+import { AdminProtectedRoute } from './components/auth/AdminProtectedRoute';
+import { PartnerProtectedRoute } from './components/auth/PartnerProtectedRoute';
+
 // Public Pages
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
@@ -26,7 +31,7 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-// Customer Support Portal
+// Public Support & Knowledge Base Pages
 import { SupportLandingPage } from './pages/SupportLandingPage';
 import { RaiseTicketPage } from './pages/RaiseTicketPage';
 import { TrackTicketPage } from './pages/TrackTicketPage';
@@ -35,7 +40,30 @@ import { KnowledgeBasePage } from './pages/KnowledgeBasePage';
 import { KnowledgeArticlePage } from './pages/KnowledgeArticlePage';
 import { AgentDashboardPage } from './pages/AgentDashboardPage';
 
-// B2B Partner Portal
+// Customer Portal Pages
+import { CustomerLoginPage } from './pages/customer/CustomerLoginPage';
+import { CustomerRegisterPage } from './pages/customer/CustomerRegisterPage';
+import { CustomerForgotPasswordPage } from './pages/customer/CustomerForgotPasswordPage';
+import { CustomerDashboardPage } from './pages/customer/CustomerDashboardPage';
+import { CustomerTicketsPage } from './pages/customer/CustomerTicketsPage';
+import { CustomerNewTicketPage } from './pages/customer/CustomerNewTicketPage';
+import { CustomerTicketDetailPage } from './pages/customer/CustomerTicketDetailPage';
+import { CustomerProfilePage } from './pages/customer/CustomerProfilePage';
+
+// Central Admin Portal Pages
+import { AdminLoginPage } from './pages/admin/AdminLoginPage';
+import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminTicketsPage } from './pages/admin/AdminTicketsPage';
+import { AdminTicketDetailPage } from './pages/admin/AdminTicketDetailPage';
+import { AdminDemosPage } from './pages/admin/AdminDemosPage';
+import { AdminDemoDetailPage } from './pages/admin/AdminDemoDetailPage';
+import { AdminCustomersPage } from './pages/admin/AdminCustomersPage';
+import { AdminCustomerDetailPage } from './pages/admin/AdminCustomerDetailPage';
+import { AdminPartnersPage } from './pages/admin/AdminPartnersPage';
+import { AdminReportsPage } from './pages/admin/AdminReportsPage';
+import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
+
+// B2B Channel Partner Portal Pages
 import { PartnerLandingPage } from './pages/PartnerLandingPage';
 import { PartnerLoginPage } from './pages/PartnerLoginPage';
 import { PartnerRequestAccessPage } from './pages/PartnerRequestAccessPage';
@@ -51,7 +79,7 @@ export const App: React.FC = () => {
     <AppProvider>
       <Router>
         <Routes>
-          {/* Public Website */}
+          {/* Public Corporate Website */}
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/healthcare" element={<ProductHealthcarePage />} />
@@ -74,7 +102,7 @@ export const App: React.FC = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/request-demo" element={<RequestDemoPage />} />
 
-          {/* Customer Support Portal */}
+          {/* Public Knowledge Base & Support Helpdesk */}
           <Route path="/support" element={<SupportLandingPage />} />
           <Route path="/support/raise-ticket" element={<RaiseTicketPage />} />
           <Route path="/support/track-ticket" element={<TrackTicketPage />} />
@@ -83,16 +111,186 @@ export const App: React.FC = () => {
           <Route path="/support/knowledge-base/:slug" element={<KnowledgeArticlePage />} />
           <Route path="/support/agent-dashboard" element={<AgentDashboardPage />} />
 
-          {/* B2B Partner Portal */}
+          {/* Authenticated Customer Support & Account Portal */}
+          <Route path="/customer/login" element={<CustomerLoginPage />} />
+          <Route path="/customer/register" element={<CustomerRegisterPage />} />
+          <Route path="/customer/forgot-password" element={<CustomerForgotPasswordPage />} />
+          <Route
+            path="/customer/dashboard"
+            element={
+              <CustomerProtectedRoute>
+                <CustomerDashboardPage />
+              </CustomerProtectedRoute>
+            }
+          />
+          <Route
+            path="/customer/tickets"
+            element={
+              <CustomerProtectedRoute>
+                <CustomerTicketsPage />
+              </CustomerProtectedRoute>
+            }
+          />
+          <Route
+            path="/customer/tickets/new"
+            element={
+              <CustomerProtectedRoute>
+                <CustomerNewTicketPage />
+              </CustomerProtectedRoute>
+            }
+          />
+          <Route
+            path="/customer/tickets/:id"
+            element={
+              <CustomerProtectedRoute>
+                <CustomerTicketDetailPage />
+              </CustomerProtectedRoute>
+            }
+          />
+          <Route
+            path="/customer/profile"
+            element={
+              <CustomerProtectedRoute>
+                <CustomerProfilePage />
+              </CustomerProtectedRoute>
+            }
+          />
+
+          {/* Centralized Administration Management System */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <AdminProtectedRoute>
+                <AdminDashboardPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/tickets"
+            element={
+              <AdminProtectedRoute>
+                <AdminTicketsPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/tickets/:id"
+            element={
+              <AdminProtectedRoute>
+                <AdminTicketDetailPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/demos"
+            element={
+              <AdminProtectedRoute>
+                <AdminDemosPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/demos/:id"
+            element={
+              <AdminProtectedRoute>
+                <AdminDemoDetailPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/customers"
+            element={
+              <AdminProtectedRoute>
+                <AdminCustomersPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/customers/:id"
+            element={
+              <AdminProtectedRoute>
+                <AdminCustomerDetailPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/partners"
+            element={
+              <AdminProtectedRoute>
+                <AdminPartnersPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/reports"
+            element={
+              <AdminProtectedRoute>
+                <AdminReportsPage />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/settings"
+            element={
+              <AdminProtectedRoute>
+                <AdminSettingsPage />
+              </AdminProtectedRoute>
+            }
+          />
+
+          {/* B2B Channel Partner Portal */}
           <Route path="/partners" element={<PartnerLandingPage />} />
           <Route path="/partners/login" element={<PartnerLoginPage />} />
           <Route path="/partners/request-access" element={<PartnerRequestAccessPage />} />
-          <Route path="/partners/dashboard" element={<PartnerDashboardPage />} />
-          <Route path="/partners/leads" element={<PartnerLeadsPage />} />
-          <Route path="/partners/leads/new" element={<PartnerNewLeadPage />} />
-          <Route path="/partners/opportunities" element={<PartnerOpportunitiesPage />} />
-          <Route path="/partners/resources" element={<PartnerResourcesPage />} />
-          <Route path="/partners/profile" element={<PartnerProfilePage />} />
+          <Route
+            path="/partners/dashboard"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerDashboardPage />
+              </PartnerProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners/leads"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerLeadsPage />
+              </PartnerProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners/leads/new"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerNewLeadPage />
+              </PartnerProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners/opportunities"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerOpportunitiesPage />
+              </PartnerProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners/resources"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerResourcesPage />
+              </PartnerProtectedRoute>
+            }
+          />
+          <Route
+            path="/partners/profile"
+            element={
+              <PartnerProtectedRoute>
+                <PartnerProfilePage />
+              </PartnerProtectedRoute>
+            }
+          />
 
           {/* General & Legal */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

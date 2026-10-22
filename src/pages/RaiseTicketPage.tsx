@@ -71,6 +71,7 @@ export const RaiseTicketPage: React.FC = () => {
     const newTicketId = addTicket({
       customerName: formData.customerName,
       organization: formData.organization,
+      organizationId: `ORG-${formData.organization.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, 10) || 'GEN'}`,
       email: formData.email,
       phone: formData.phone,
       product: formData.product,

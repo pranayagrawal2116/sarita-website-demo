@@ -105,8 +105,8 @@ export interface CaseStudy {
 }
 
 /* Support Portal Types */
-export type TicketStatus = 'Open' | 'In Progress' | 'Waiting for Customer' | 'Resolved' | 'Closed';
-export type TicketPriority = 'Low' | 'Medium' | 'High' | 'Critical';
+export type TicketStatus = 'Open' | 'Assigned' | 'In Progress' | 'Waiting for Customer' | 'Resolved' | 'Closed';
+export type TicketPriority = 'Low' | 'Normal' | 'High' | 'Critical';
 export type TicketCategory =
   | 'Technical Issue'
   | 'Product Usage'
@@ -125,10 +125,19 @@ export interface TicketMessage {
   attachmentName?: string;
 }
 
+export interface TicketInternalNote {
+  id: string;
+  author: string;
+  note: string;
+  timestamp: string;
+}
+
 export interface SupportTicket {
-  id: string; // e.g., SIT-2489
+  id: string; // e.g., SIT-2489 or SRT-2026-0001
+  customerId?: string;
   customerName: string;
   organization: string;
+  organizationId: string;
   email: string;
   phone: string;
   product: string;
@@ -142,7 +151,72 @@ export interface SupportTicket {
   updatedAt: string;
   assignedAgent: string;
   timeline: TicketMessage[];
+  internalNotes: TicketInternalNote[]; // Strictly hidden from customer views
+  resolutionNotes?: string;
   attachments: string[];
+}
+
+/* Customer Portal Types */
+export type CustomerAccountStatus = 'Active' | 'Pending Approval' | 'Suspended';
+
+export interface CustomerAccount {
+  id: string; // e.g. CUST-2026-001
+  name: string;
+  email: string;
+  phone: string;
+  organization: string;
+  organizationId: string;
+  accountReference: string;
+  product: string;
+  status: CustomerAccountStatus;
+  createdAt: string;
+  lastLogin?: string;
+}
+
+/* Admin Portal Types */
+export interface AdminUser {
+  id: string;
+  name: string;
+  email: string;
+  role: 'Super Administrator' | 'Support Lead' | 'Sales Manager';
+  department: string;
+}
+
+/* Demo Appointment Scheduling Types */
+export type DemoBookingStatus =
+  | 'New Request'
+  | 'Awaiting Confirmation'
+  | 'Confirmed'
+  | 'Rescheduled'
+  | 'Completed'
+  | 'Cancelled';
+
+export interface DemoInternalNote {
+  id: string;
+  author: string;
+  note: string;
+  timestamp: string;
+}
+
+export interface DemoAppointment {
+  id: string; // e.g. DMR-2026-0042
+  name: string;
+  organization: string;
+  businessEmail: string;
+  phone: string;
+  productInterest: string;
+  organizationSize: string;
+  preferredDate: string; // YYYY-MM-DD
+  preferredTimeSlot: string; // e.g. "11:00 AM - 12:00 PM IST"
+  timeZone: string; // e.g. "Asia/Kolkata (IST)"
+  message: string;
+  status: DemoBookingStatus;
+  assignedSalesRep: string;
+  meetingLink?: string;
+  internalNotes: DemoInternalNote[];
+  outcomeNotes?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface KnowledgeArticle {
@@ -204,8 +278,11 @@ export interface DemoRequestPayload {
   organization: string;
   businessEmail: string;
   phone: string;
-  industry: string;
-  productInterest: ProductId | 'all';
-  organizationSize: string;
-  message: string;
+  industry?: string;
+  productInterest: ProductId | 'all' | string;
+  organizationSize?: string;
+  preferredDate?: string; // YYYY-MM-DD
+  preferredTimeSlot?: string; // e.g. "11:00 AM - 12:00 PM IST"
+  timeZone?: string; // e.g. "Asia/Kolkata (IST)"
+  message?: string;
 }

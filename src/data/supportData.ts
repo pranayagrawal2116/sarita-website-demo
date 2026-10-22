@@ -3,8 +3,10 @@ import { SupportTicket, KnowledgeArticle } from '../types';
 export const INITIAL_TICKETS: SupportTicket[] = [
   {
     id: 'SIT-2489',
+    customerId: 'CUST-2024-001',
     customerName: 'Dr. Ramesh Patel',
     organization: 'Apex Multispeciality Hospital',
+    organizationId: 'ORG-APEX-001',
     email: 'rpatel@apexmed.example.in',
     phone: '+91 98250 12345',
     product: 'Sarita HealthCare',
@@ -18,6 +20,14 @@ export const INITIAL_TICKETS: SupportTicket[] = [
     updatedAt: '2026-10-22 02:15 PM',
     assignedAgent: 'Vikram Joshi (Senior Support Engineer)',
     attachments: ['sysmex_interface_log.txt', 'error_screenshot_oct22.png'],
+    internalNotes: [
+      {
+        id: 'inote-1',
+        author: 'Vikram Joshi',
+        note: 'Customer hospital has AMC Platinum SLA (2-hour response). COM3 baud rate was mismatched after client OS update.',
+        timestamp: '2026-10-22 11:00 AM'
+      }
+    ],
     timeline: [
       {
         id: 'msg-1',
@@ -45,14 +55,16 @@ export const INITIAL_TICKETS: SupportTicket[] = [
   },
   {
     id: 'SIT-2490',
+    customerId: 'CUST-2023-014',
     customerName: 'Mehul Shah',
     organization: 'AeroTex Global Exporters',
+    organizationId: 'ORG-AEROTEX-002',
     email: 'mshah@aerotexglobal.example.com',
     phone: '+91 98980 54321',
     product: 'Sarita Nimble',
     siteReference: 'AEROTEX-HQ-DB',
     category: 'Product Usage',
-    priority: 'Medium',
+    priority: 'Normal',
     status: 'Open',
     subject: 'Query regarding RoDTEP schedule rate revision on textile HS 5407',
     description: 'We need guidance on updating the revised RoDTEP incentive schedule rates notified by DGFT for synthetic fabric exports. We want to ensure that all proforma and custom invoices generated from next Monday reflect the updated percentage automatically.',
@@ -60,6 +72,14 @@ export const INITIAL_TICKETS: SupportTicket[] = [
     updatedAt: '2026-10-21 05:00 PM',
     assignedAgent: 'Sunil Varma (EXIM Specialist)',
     attachments: ['dgft_public_notice_rodtep.pdf'],
+    internalNotes: [
+      {
+        id: 'inote-2',
+        author: 'Sunil Varma',
+        note: 'Verified DGFT notification #32/2026. Master table patch script prepared.',
+        timestamp: '2026-10-21 04:50 PM'
+      }
+    ],
     timeline: [
       {
         id: 'msg-1',
@@ -80,9 +100,11 @@ export const INITIAL_TICKETS: SupportTicket[] = [
   },
   {
     id: 'SIT-2491',
-    customerName: 'Bhavin Desai',
+    customerId: 'CUST-2022-009',
+    customerName: 'Pravinbhai Patel',
     organization: 'Kabilpore Co-Op Credit Society Ltd.',
-    email: 'accounts@kabilporecredit.example.in',
+    organizationId: 'ORG-KABILPORE-003',
+    email: 'pravin@kabilporecredit.example.in',
     phone: '+91 94261 77889',
     product: 'Sarita BankWare',
     siteReference: 'KABILPORE-MAIN-BR01',
@@ -95,10 +117,18 @@ export const INITIAL_TICKETS: SupportTicket[] = [
     updatedAt: '2026-10-21 11:20 AM',
     assignedAgent: 'Pooja Mehta (Banking Solutions)',
     attachments: [],
+    internalNotes: [
+      {
+        id: 'inote-3',
+        author: 'Pooja Mehta',
+        note: 'Customer bylaws section 14(b) usually mandates day-wise pro-rata. Awaiting formal confirmation from Society Secretary.',
+        timestamp: '2026-10-21 11:15 AM'
+      }
+    ],
     timeline: [
       {
         id: 'msg-1',
-        sender: 'Bhavin Desai',
+        sender: 'Pravinbhai Patel',
         senderType: 'customer',
         message: 'Please advise on the configuration flag for pro-rata dividend calculation for members admitted/resigned during the year.',
         timestamp: '2026-10-20 02:15 PM'
@@ -107,21 +137,23 @@ export const INITIAL_TICKETS: SupportTicket[] = [
         id: 'msg-2',
         sender: 'Pooja Mehta',
         senderType: 'support_agent',
-        message: 'Hello Bhavin ji, Sarita BankWare provides two methods: (1) Full dividend on active members as of 31st March, or (2) Day-wise pro-rata based on admission/resignation date. Please confirm which method is stipulated in your society bylaws so we can toggle the parameter.',
+        message: 'Hello Pravin ji, Sarita BankWare provides two methods: (1) Full dividend on active members as of 31st March, or (2) Day-wise pro-rata based on admission/resignation date. Please confirm which method is stipulated in your society bylaws so we can toggle the parameter.',
         timestamp: '2026-10-21 11:20 AM'
       }
     ]
   },
   {
     id: 'SIT-2492',
-    customerName: 'Rajesh Vora',
-    organization: 'Vora Departmental Store',
-    email: 'rajesh@vorastore.example.com',
+    customerId: 'CUST-2026-031',
+    customerName: 'Suresh Shah',
+    organization: 'CityLife Retail Mart',
+    organizationId: 'ORG-CITYLIFE-004',
+    email: 'suresh@citylife.example.in',
     phone: '+91 98241 33221',
     product: 'Sarita Retail',
-    siteReference: 'VORA-POS-TERMINAL-02',
+    siteReference: 'CITYLIFE-POS-TERMINAL-02',
     category: 'Installation',
-    priority: 'Medium',
+    priority: 'Normal',
     status: 'Resolved',
     subject: 'TVS RP-3200 Star thermal receipt printer driver configuration',
     description: 'Added a third billing counter for the upcoming festive rush. We installed the TVS thermal printer but text formatting on the cut receipt is truncating columns.',
@@ -129,10 +161,19 @@ export const INITIAL_TICKETS: SupportTicket[] = [
     updatedAt: '2026-10-19 03:30 PM',
     assignedAgent: 'Vikram Joshi (Senior Support Engineer)',
     attachments: ['receipt_sample.jpg'],
+    internalNotes: [
+      {
+        id: 'inote-4',
+        author: 'Vikram Joshi',
+        note: 'Resolved via ESC/POS 80mm column width configuration. Hardware verified on test receipts.',
+        timestamp: '2026-10-19 03:25 PM'
+      }
+    ],
+    resolutionNotes: 'Configured ESC/POS 3-inch 80mm driver settings in Sarita Retail Hardware Manager and tested 3 sample invoices. Printing aligned perfectly.',
     timeline: [
       {
         id: 'msg-1',
-        sender: 'Rajesh Vora',
+        sender: 'Suresh Shah',
         senderType: 'customer',
         message: 'Need help adjusting the paper width from 48-column to 40-column in the POS hardware settings.',
         timestamp: '2026-10-19 11:00 AM'

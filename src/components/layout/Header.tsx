@@ -10,6 +10,8 @@ import {
   ShoppingCart,
   Headphones,
   KeyRound,
+  ShieldCheck,
+  UserCheck,
   Sparkles,
   ArrowRight,
   Code2,
@@ -24,7 +26,7 @@ import { useApp } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const { partnerAuthenticated } = useApp();
+  const { partnerAuthenticated, customerAuthenticated, currentCustomer, adminAuthenticated, adminUser } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -113,21 +115,45 @@ export const Header: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-medium ml-auto">
+            <div className="flex items-center gap-3 sm:gap-4 text-xs font-medium ml-auto">
+              {/* Customer Portal Link */}
               <Link
-                to="/support"
+                to={customerAuthenticated ? '/customer/dashboard' : '/customer/login'}
                 className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+                title="Customer Support Ticketing & Account Portal"
               >
                 <Headphones className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Customer Support</span>
+                <span className="hidden sm:inline">
+                  {customerAuthenticated ? `${currentCustomer?.name.split(' ')[0]} (Customer Portal)` : 'Customer Portal'}
+                </span>
+                <span className="sm:hidden">Customer</span>
               </Link>
-              <span className="text-slate-600">|</span>
+              
+              <span className="text-slate-700">|</span>
+
+              {/* Partner Portal Link */}
               <Link
                 to={partnerAuthenticated ? '/partners/dashboard' : '/partners/login'}
                 className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+                title="Authorized B2B Channel Partner Portal"
               >
                 <KeyRound className="w-3.5 h-3.5 text-brand-400" />
-                <span>{partnerAuthenticated ? 'Partner Portal (Active)' : 'Partner Login'}</span>
+                <span className="hidden sm:inline">
+                  {partnerAuthenticated ? 'Partner Portal (Active)' : 'Partner Portal'}
+                </span>
+                <span className="sm:hidden">Partner</span>
+              </Link>
+
+              <span className="text-slate-700">|</span>
+
+              {/* Admin Portal Link */}
+              <Link
+                to={adminAuthenticated ? '/admin/dashboard' : '/admin/login'}
+                className="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors"
+                title="Central Administration Management System"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+                <span>Admin</span>
               </Link>
             </div>
           </div>
@@ -474,12 +500,17 @@ export const Header: React.FC = () => {
               <Link to="/contact" className="block text-sm font-medium text-slate-800">
                 Contact Us
               </Link>
-              <Link to="/support" className="block text-sm font-medium text-emerald-700 font-semibold">
-                Customer Support Portal
-              </Link>
-              <Link to="/partners/login" className="block text-sm font-medium text-brand-700 font-semibold">
-                Channel Partner Portal
-              </Link>
+              <div className="border-t border-slate-200 pt-2 space-y-1">
+                <Link to={customerAuthenticated ? '/customer/dashboard' : '/customer/login'} className="block text-sm font-medium text-emerald-700 font-semibold">
+                  Customer Portal {customerAuthenticated ? '(Active Session)' : '(Login / Register)'}
+                </Link>
+                <Link to={partnerAuthenticated ? '/partners/dashboard' : '/partners/login'} className="block text-sm font-medium text-brand-700 font-semibold">
+                  Channel Partner Portal {partnerAuthenticated ? '(Active)' : '(Login)'}
+                </Link>
+                <Link to={adminAuthenticated ? '/admin/dashboard' : '/admin/login'} className="block text-sm font-medium text-amber-700 font-semibold">
+                  Admin Console {adminAuthenticated ? '(Management Console)' : '(Login)'}
+                </Link>
+              </div>
             </div>
 
             <div className="pt-2">
