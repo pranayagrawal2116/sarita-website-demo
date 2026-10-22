@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /support/agent-dashboard
+Disallow: /partners/dashboard
+Disallow: /partners/leads
+Disallow: /partners/opportunities
+
+Sitemap: https://www.saritainfotech.com/sitemap.xml
