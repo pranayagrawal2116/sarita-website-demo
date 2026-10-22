@@ -91,7 +91,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="demo-modal" className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden relative animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
         <div className="bg-gradient-to-r from-slate-900 to-brand-950 px-6 py-5 text-white flex justify-between items-center">
@@ -102,6 +102,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
             <h3 className="text-xl font-bold text-white mt-0.5">Request a Product Demo</h3>
           </div>
           <button
+            id="modal-close-btn"
             onClick={onClose}
             className="text-slate-400 hover:text-white p-1 rounded-lg transition-colors"
             aria-label="Close modal"
@@ -271,6 +272,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
                   Cancel
                 </button>
                 <button
+                  id="modal-submit-btn"
                   type="submit"
                   disabled={isSubmitting}
                   className="btn-primary"

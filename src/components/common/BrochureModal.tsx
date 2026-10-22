@@ -55,14 +55,14 @@ NOTE: This document is generated for demonstration and evaluation purposes.
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="brochure-modal" className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden relative animate-in fade-in zoom-in-95 duration-150">
         <div className="bg-slate-900 px-6 py-4 text-white flex justify-between items-center">
           <div className="flex items-center gap-2">
             <FileText className="w-5 h-5 text-brand-400" />
             <h3 className="font-bold text-white text-base">Product Brochure & Architecture Spec</h3>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white p-1">
+          <button id="brochure-close-btn" onClick={onClose} className="text-slate-400 hover:text-white p-1">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -94,6 +94,7 @@ NOTE: This document is generated for demonstration and evaluation purposes.
               Close
             </button>
             <button
+              id="brochure-download-btn"
               onClick={handleDownload}
               className="btn-primary"
             >

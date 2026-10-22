@@ -80,10 +80,11 @@ export const PartnerNewLeadPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm text-slate-700">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="lead-prospect-name" className="block text-xs font-semibold text-slate-700 mb-1">
                   Prospect Decision Maker Name <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="lead-prospect-name"
                   type="text"
                   value={formData.prospectName}
                   onChange={(e) => setFormData({ ...formData, prospectName: e.target.value })}
@@ -96,10 +97,11 @@ export const PartnerNewLeadPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="lead-organization" className="block text-xs font-semibold text-slate-700 mb-1">
                   Prospect Organization / Company <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="lead-organization"
                   type="text"
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -114,10 +116,11 @@ export const PartnerNewLeadPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="lead-email" className="block text-xs font-semibold text-slate-700 mb-1">
                   Prospect Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="lead-email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -130,10 +133,11 @@ export const PartnerNewLeadPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="lead-phone" className="block text-xs font-semibold text-slate-700 mb-1">
                   Direct Contact Number <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="lead-phone"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -225,6 +229,7 @@ export const PartnerNewLeadPage: React.FC = () => {
                 Cancel
               </Link>
               <button
+                id="lead-submit-btn"
                 type="submit"
                 className="btn-primary py-2.5 px-6 shadow-sm"
               >

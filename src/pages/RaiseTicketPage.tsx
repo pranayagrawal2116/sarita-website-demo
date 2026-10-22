@@ -110,10 +110,11 @@ export const RaiseTicketPage: React.FC = () => {
             {/* Customer & Organization */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="ticket-customer-name" className="block text-xs font-semibold text-slate-700 mb-1">
                   Customer / Contact Person <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="ticket-customer-name"
                   type="text"
                   value={formData.customerName}
                   onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
@@ -126,10 +127,11 @@ export const RaiseTicketPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="ticket-organization" className="block text-xs font-semibold text-slate-700 mb-1">
                   Hospital / Company Name <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="ticket-organization"
                   type="text"
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -145,10 +147,11 @@ export const RaiseTicketPage: React.FC = () => {
             {/* Email & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="ticket-email" className="block text-xs font-semibold text-slate-700 mb-1">
                   Email Address for Status Updates <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="ticket-email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -161,10 +164,11 @@ export const RaiseTicketPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label htmlFor="ticket-phone" className="block text-xs font-semibold text-slate-700 mb-1">
                   Direct Phone / Mobile Number <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="ticket-phone"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -249,10 +253,11 @@ export const RaiseTicketPage: React.FC = () => {
 
             {/* Subject */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label htmlFor="ticket-subject" className="block text-xs font-semibold text-slate-700 mb-1">
                 Ticket Subject <span className="text-rose-500">*</span>
               </label>
               <input
+                id="ticket-subject"
                 type="text"
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -266,10 +271,11 @@ export const RaiseTicketPage: React.FC = () => {
 
             {/* Description */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label htmlFor="ticket-description" className="block text-xs font-semibold text-slate-700 mb-1">
                 Detailed Issue Description & Steps to Reproduce <span className="text-rose-500">*</span>
               </label>
               <textarea
+                id="ticket-description"
                 rows={5}
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -331,6 +337,7 @@ export const RaiseTicketPage: React.FC = () => {
                 Cancel
               </Link>
               <button
+                id="ticket-submit-btn"
                 type="submit"
                 className="btn-primary py-2.5 px-6 bg-emerald-600 hover:bg-emerald-500 shadow-sm"
               >

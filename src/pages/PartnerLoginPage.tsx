@@ -68,6 +68,7 @@ export const PartnerLoginPage: React.FC = () => {
                 Click below to auto-fill verified mock credentials for <strong>{partnerProfile.companyName}</strong> ({partnerProfile.partnerTier}).
               </p>
               <button
+                id="autofill-demo-btn"
                 type="button"
                 onClick={handleFillDemoCredentials}
                 className="w-full py-1.5 px-3 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs shadow-sm transition-all"
@@ -85,12 +86,13 @@ export const PartnerLoginPage: React.FC = () => {
 
             <form onSubmit={handleLogin} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">
+                <label htmlFor="partner-email" className="block font-semibold text-slate-700 mb-1">
                   Partner Business Email
                 </label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
+                    id="partner-email"
                     type="email"
                     required
                     value={email}
@@ -103,7 +105,7 @@ export const PartnerLoginPage: React.FC = () => {
 
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="font-semibold text-slate-700">
+                  <label htmlFor="partner-password" className="font-semibold text-slate-700">
                     Password
                   </label>
                   <button
@@ -117,6 +119,7 @@ export const PartnerLoginPage: React.FC = () => {
                 <div className="relative">
                   <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
+                    id="partner-password"
                     type="password"
                     required
                     value={password}
@@ -140,6 +143,7 @@ export const PartnerLoginPage: React.FC = () => {
               </div>
 
               <button
+                id="partner-login-btn"
                 type="submit"
                 className="w-full btn-primary py-2.5 text-sm shadow-sm"
               >

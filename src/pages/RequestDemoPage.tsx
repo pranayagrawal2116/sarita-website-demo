@@ -141,10 +141,12 @@ export const RequestDemoPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="demo-name" className="block text-xs font-semibold text-slate-700 mb-1">
                     Your Full Name <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="demo-name"
+                    name="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -157,10 +159,12 @@ export const RequestDemoPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="demo-organization" className="block text-xs font-semibold text-slate-700 mb-1">
                     Organization / Company Name <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="demo-organization"
+                    name="organization"
                     type="text"
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -175,10 +179,12 @@ export const RequestDemoPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="demo-email" className="block text-xs font-semibold text-slate-700 mb-1">
                     Work Email Address <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="demo-email"
+                    name="businessEmail"
                     type="email"
                     value={formData.businessEmail}
                     onChange={(e) => setFormData({ ...formData, businessEmail: e.target.value })}
@@ -191,10 +197,12 @@ export const RequestDemoPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="demo-phone" className="block text-xs font-semibold text-slate-700 mb-1">
                     Contact Phone Number <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="demo-phone"
+                    name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -209,10 +217,12 @@ export const RequestDemoPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="demo-product" className="block text-xs font-semibold text-slate-700 mb-1">
                     Product of Interest <span className="text-rose-500">*</span>
                   </label>
                   <select
+                    id="demo-product"
+                    name="productInterest"
                     value={formData.productInterest}
                     onChange={(e) => setFormData({ ...formData, productInterest: e.target.value as ProductId | 'all' })}
                     className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white"
@@ -263,6 +273,7 @@ export const RequestDemoPage: React.FC = () => {
 
               <div className="pt-2 flex justify-end">
                 <button
+                  id="demo-submit-btn"
                   type="submit"
                   disabled={isSubmitting}
                   className="btn-primary py-3 px-8 text-base shadow-sm"

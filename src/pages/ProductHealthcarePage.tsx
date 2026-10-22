@@ -76,6 +76,7 @@ export const ProductHealthcarePage: React.FC = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <button
+                id="schedule-walkthrough-btn"
                 onClick={() => setDemoOpen(true)}
                 className="btn-primary text-base px-6 py-3 bg-emerald-600 hover:bg-emerald-500 shadow-sm"
               >
@@ -83,6 +84,7 @@ export const ProductHealthcarePage: React.FC = () => {
                 Schedule Hospital Walkthrough
               </button>
               <button
+                id="download-brochure-btn"
                 onClick={() => setBrochureOpen(true)}
                 className="btn-secondary text-base px-6 py-3"
               >
