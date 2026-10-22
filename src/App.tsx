@@ -77,7 +77,7 @@ import { PartnerProfilePage } from './pages/PartnerProfilePage';
 export const App: React.FC = () => {
   return (
     <AppProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <Routes>
           {/* Public Corporate Website */}
           <Route path="/" element={<HomePage />} />
